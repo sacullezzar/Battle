@@ -1,21 +1,9 @@
-require 'sinatra'
+require 'sinatra/base'
 
-get '/' do
-  'hello!'
-end
+class Battle < Sinatra::Base
+  get '/' do
+    'Hello Battle!'
+  end
 
-get '/secret' do
-  'This is a secret page'
-end
-
-get '/named-cat' do
-  p params[:name]
-  @cat_name = params[:name]
-  @lastname = params[:lastname]
-  erb(:index)
-end
-
-get '/random-cat' do
-  @cat_name = ["Amigo", "Oscar", "Viking", "Geoff", "Slayer", "Fenton"].sample
-  erb(:index)
+  run! if app_file == $0
 end
