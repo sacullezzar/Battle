@@ -20,7 +20,7 @@ feature 'View Hitpoints' do
 end
 
 feature 'Player 1 attacks Player 2' do
-  scenario 'Player 1 attacks and reduces Player 2 HP' do
+  scenario 'Player 1 attacks Player 2' do
     sign_in_and_play
     click_button 'Attack'
     expect(page).to have_content('Lucas attacked Zoe')
