@@ -14,3 +14,13 @@ feature 'Filling in player names' do
     expect(page).to have_content('Lucas vs Zoe')
   end
 end
+
+feature 'View Hitpoints' do
+  scenario "Players can see each other's hitpoints" do
+    visit ('/')
+    fill_in :player_1_name, with: 'Lucas'
+    fill_in :player_2_name, with: 'Zoe'
+    click_button('Submit')
+    expect(page).to have_content('Lucas HP = 100')
+  end
+end
