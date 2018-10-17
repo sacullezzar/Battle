@@ -12,8 +12,5 @@ describe Player do
     expect(player.hp).to eq(100)
   end
 
-  it "can have it's HP reduced" do
-    player.attacked
-    expect(player.hp).to eq(90)
-  end
+
 end

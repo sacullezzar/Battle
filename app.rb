@@ -27,7 +27,7 @@ class  Battle < Sinatra::Base
     @player_2_name = $player_2.name
     @player_1_hp = $player_1.hp
     @player_2_hp = $player_2.hp
-    # needed, unless cached
+    Game.new.attack($player_2)
     erb :attack
   end
 
