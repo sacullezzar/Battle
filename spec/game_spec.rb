@@ -2,8 +2,8 @@ require 'game'
 
 describe Game do
   subject(:game) { described_class.new(dummy1, dummy2) }
-  let(:dummy1) {double :player }
-  let(:dummy2) {double :player }
+  let(:dummy1) {double :player1 }
+  let(:dummy2) {double :player2 }
 
   describe '#player_1' do
     it "retrieves player 1" do
@@ -20,7 +20,18 @@ describe Game do
   describe "#attack" do
     it "reduces HP" do
       expect(dummy2).to receive(:receive_damage)
-      game.attack(dummy2)
+      game.attack(dummy1)
+    end
+  end
+
+  describe "#turns" do
+    it "shows player 1 as the first turn" do
+      expect(game.current_turn).to eq dummy1
+    end
+
+    it "changes to player 2 for the second turn" do
+      game.switch_turn
+      expect(game.current_turn).to eq dummy2
     end
   end
 end

@@ -29,6 +29,17 @@ feature 'Player 1 attacks Player 2' do
     sign_in_and_play
     click_button 'Attack'
     click_button 'Continue'
-    expect(page). to have_content('Lucas HP = 100 Zoe HP = 90')
+    expect(page).to have_content('Lucas HP = 100 Zoe HP = 90')
+  end
+end
+
+feature 'Switching turns' do
+  scenario 'switches to the other player at the end of a turn' do
+    sign_in_and_play
+    click_button 'Attack'
+    click_button 'Continue'
+    click_button 'Attack'
+    click_button 'Continue'
+    expect(page).to have_content('Lucas HP = 90 Zoe HP = 90')
   end
 end
