@@ -27,8 +27,7 @@ feature 'Player 1 attacks Player 2' do
   end
   scenario 'Displays reduced hitpoints' do
     sign_in_and_play
-    click_button 'Attack'
-    click_button 'Continue'
+    attack_and_continue
     expect(page).to have_content('Lucas HP = 100 Zoe HP = 90')
   end
 end
@@ -36,10 +35,16 @@ end
 feature 'Switching turns' do
   scenario 'switches to the other player at the end of a turn' do
     sign_in_and_play
-    click_button 'Attack'
-    click_button 'Continue'
-    click_button 'Attack'
-    click_button 'Continue'
+    attack_and_continue
+    attack_and_continue
     expect(page).to have_content('Lucas HP = 90 Zoe HP = 90')
+  end
+end
+
+feature 'winning and losing' do
+  scenario 'game ends when either player reaches 0HP' do
+    sign_in_and_play
+    19.times(attack_and_continue)
+    expect(page).to have_content('GAME OVER')
   end
 end
